@@ -33,3 +33,22 @@ Los siguiente comandos funcionan tal cual como en el cmd de Windows
 | `$ type [archivo]`     | Muestra el contenido de un archivo de texto. |
 | `$ echo [contenido] > [archivo]` | Crea un archivo y escribe contenido en él.       |
 | `$ echo [contenido] >> [archivo]` | Añade contenido a un archivo existente.          |
+
+## Pasos de ejecucion para Windows 
+
+- clonar el repositorio
+- Crear un entorno virtual en la carpeta del repositorio (**RECOMENDABLE**) 
+ 
+          `$ py -m venv venv`
+
+- Activar el entorno virtual (**estar ubicado en la raiz del proyecto**) 
+
+          `$ .\venv\scripts\activate`
+
+- Instalar las dependencias del proyecto ubicadas en el archivo requierements.txt
+
+         `$ pip install -r requirements.txt`
+
+- ejecuta el script 
+
+         `$ py main. py`

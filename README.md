@@ -35,6 +35,9 @@ Los siguiente comandos funcionan tal cual como en el cmd de Windows
 | `$ echo [contenido] >> [archivo]` | Añade contenido a un archivo existente.          |
 | `$ start [archivo]` | Abre un archivo con el programa predeterminado.       |
 
+**NOTA:** es probable que se puedan usar mas comandos de Windows con normalidad 
+a parte de los anteriormente mencionados, los cuales ya eatn probados.
+
 ## Pasos de ejecucion para Windows 
 
 - clonar el repositorio

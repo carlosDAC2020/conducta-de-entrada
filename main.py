@@ -1,4 +1,8 @@
 import os
+from colorama import init, Fore, Back
+import datetime
+
+init()
 
 # Obtener la ruta al directorio actual del script
 ruta_script = os.path.dirname(os.path.abspath(__file__))
@@ -13,8 +17,8 @@ def command_identification(command):
     # cambiar de directorio
     if "cd" == command_instructions[0]:
         change_directory(command_instructions)
-    # mostrar un archivo por consola
-    elif "cat"==command_instructions[0]:
+    elif "dir"==command_instructions[0]:
+        list_content_directory()
         pass
     else :
         os.system(command)
@@ -52,15 +56,36 @@ def change_directory(command):
 
     else:
         print("en caso de usar banderas")
-    
-    
-    pass
 
+def list_content_directory():
+    current_rout = header_path.split("\\")
+    current_rout.pop(0)
+    current_rout = "\\".join(current_rout)
+    content = os.listdir(os.path.join(ruta_script, "C", current_rout))
 
+    print('-'*55)
+    print(Fore.MAGENTA+"\n{:20} {:10} {:10} {:10}".format('Created', 'Type', 'Size', 'Name')+Fore.RESET)
+    print('-'*55)
+    for item in content:
+        item_path = os.path.join(ruta_script, "C", current_rout, item)
+        type =  Back.BLUE + "DIR"+ Back.RESET if os.path.isdir(item_path) else Back.GREEN + "FLE"+ Back.RESET 
+        size = os.path.getsize(item_path)
+        date_created_timestamp = os.path.getctime(item_path)
+        date_created = datetime.datetime.fromtimestamp(date_created_timestamp).strftime("%d/%m/%Y %I:%M %p")
+        print("{:^20} {:^10} {:^15} {:^8}".format(date_created, type, f'{size} bytes', item))
+    print('-'*55)
+    
 
 def run():
     while True:
-        command = input(f"  {header_path}> $ ")
+
+        # estilos de linea de comando 
+        aux = header_path.split("\\")
+        raiz= Fore.CYAN + aux[0]
+        ruta = "\\"+"\\".join(aux[1:]) 
+        ruta = Fore.GREEN + ruta
+
+        command = input(f" {raiz}{ruta}> "+Fore.MAGENTA+"$ "+Fore.WHITE)
         command_identification(command)
 
         

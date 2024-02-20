@@ -24,8 +24,6 @@ Los siguiente comandos funcionan tal cual como en el cmd de Windows
 | Comando                | Descripción                                |
 | :--------------------- | :----------------------------------------- |
 | `$ dir`                | Muestra el contenido del directorio.       |
-| `$ cd [directorio]`    | Cambia al directorio especificado.         |
-| `$ cd..`               | Retrocede un nivel en la estructura de directorios. |
 | `$ mkdir [nombre_directorio]` | Crea un nuevo directorio.            |
 | `$ rmdir [nombre_directorio]` | Elimina un directorio vacío.         |
 | `$ del [archivo]`      | Elimina un archivo.                        |
@@ -33,4 +31,5 @@ Los siguiente comandos funcionan tal cual como en el cmd de Windows
 | `$ move [origen] [destino]` | Mueve archivos de un lugar a otro.   |
 | `$ ren [nombre_actual] [nuevo_nombre]` | Cambia el nombre de un archivo o directorio. |
 | `$ type [archivo]`     | Muestra el contenido de un archivo de texto. |
-
+| `$ echo [contenido] > [archivo]` | Crea un archivo y escribe contenido en él.       |
+| `$ echo [contenido] >> [archivo]` | Añade contenido a un archivo existente.          |

@@ -85,7 +85,7 @@ def run():
         ruta = "\\"+"\\".join(aux[1:]) 
         ruta = Fore.GREEN + ruta
 
-        command = input(f" {raiz}{ruta}> "+Fore.MAGENTA+"$ "+Fore.WHITE)
+        command = input(f"\n {raiz}{ruta}> "+Fore.MAGENTA+"$ "+Fore.WHITE)
         command_identification(command)
 
         

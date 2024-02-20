@@ -33,6 +33,7 @@ Los siguiente comandos funcionan tal cual como en el cmd de Windows
 | `$ type [archivo]`     | Muestra el contenido de un archivo de texto. |
 | `$ echo [contenido] > [archivo]` | Crea un archivo y escribe contenido en él.       |
 | `$ echo [contenido] >> [archivo]` | Añade contenido a un archivo existente.          |
+| `$ start [archivo]` | Abre un archivo con el programa predeterminado.       |
 
 ## Pasos de ejecucion para Windows 
 

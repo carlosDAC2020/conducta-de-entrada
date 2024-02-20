@@ -11,7 +11,7 @@ Se realiza una búsqueda a partir de la carpeta actual hacia algún subdirectori
 <div style="display: inline-block;">
     <img src="/images/recorrido_disponible.jpeg" alt="Descripción de la imagen 1" style="width: 200px;">
 </div>
-<div style="display: inline-block;">
+<div style="display: inline-block; margin-left: 10px;">
     <img src="/images/recorrido_no_disponible.jpeg" alt="Descripción de la imagen 2" style="width: 200px;">
 </div>
 

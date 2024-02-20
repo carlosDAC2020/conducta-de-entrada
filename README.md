@@ -1,5 +1,5 @@
 # sistema de archivos 
-programa q simula un sistema simula un cli para manejar de archivos sencillo, este programa nos permitira realizar operaciones sencillas como busqueda, creacion, elimiacion y listado de archivos.
+programa q simula un sistema simula un cli para manejar un sietema de archivos sencillo, este programa nos permitira realizar operaciones sencillas como busqueda, creacion, elimiacion y listado de archivos.
 
 ![](/images/example.jpeg)
 
@@ -18,3 +18,18 @@ Se realiza una búsqueda a partir de la carpeta actual hacia algún subdirectori
 
 El comando `cd ..` está habilitado en esta simulación para retroceder un directorio por comando. Esto significa que puedes usar `cd ..` para retroceder un nivel en la estructura de directorios en tu simulación. Sin embargo, solo puedes retroceder un directorio a la vez. Por ejemplo, si estás en el directorio `C:\D3\D31`  y ejecutas `cd ..`, retrocederás al directorio `C:\D3`.
 
+## Otros comandos disponibles 
+Los sigyiente comandos funcionan tal cual como en el cmd de Windows 
+
+| Comando       | Descripción                                |
+| :------------ | :----------------------------------------- |
+| dir           | Muestra el contenido del directorio.        |
+| cd [directorio] | Cambia al directorio especificado.        |
+| cd..          | Retrocede un nivel en la estructura de directorios. |
+| mkdir [nombre_directorio] | Crea un nuevo directorio.       |
+| rmdir [nombre_directorio] | Elimina un directorio vacío.     |
+| del [archivo] | Elimina un archivo.                      |
+| copy [origen] [destino] | Copia archivos de un lugar a otro. |
+| move [origen] [destino] | Mueve archivos de un lugar a otro. |
+| ren [nombre_actual] [nuevo_nombre] | Cambia el nombre de un archivo o directorio. |
+| type [archivo] | Muestra el contenido de un archivo de texto. |

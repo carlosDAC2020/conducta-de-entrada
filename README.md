@@ -3,8 +3,9 @@ programa q simula un sistema simula un cli para manejar de archivos sencillo, es
 
 ![](/images/example.jpeg)
 
-## Busqueda
-En esta funcion se simula la ejecucion del comando cd para cambiar de directorio de varias formas.
-### Por rutas relativas
-SE hace una busqueda a partir de la carpeta actual a algun subdirectorio de esta.
-`
+## Búsqueda
+En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.
+
+Se realiza una búsqueda a partir de la carpeta actual hacia algún subdirectorio de esta. Por ejemplo, si se está en la raíz `C:\` y se entra al directorio `D3`, se puede seguir recorriendo los directorios ubicados en `D3` y así sucesivamente. Sin embargo, la búsqueda en dirección ascendente para retroceder de directorio no está disponible en esta simulación.
+ ![Recorrido disponible](/images/recorrido_disponible.jpeg)
+ ![Recorrido no disponible](/images/recorrido_no_disponible.jpeg)

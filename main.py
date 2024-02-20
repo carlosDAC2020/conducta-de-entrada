@@ -56,21 +56,11 @@ def change_directory(command):
     
     pass
 
-def delete_file(command):
-    pass
 
-def create_file(command):
-    pass
-
-def create_directory(command):
-    pass
-
-def delete_directory(command):
-    pass
 
 def run():
     while True:
-        command = input(f"{header_path}> ")
+        command = input(f"  {header_path}> $ ")
         command_identification(command)
 
         

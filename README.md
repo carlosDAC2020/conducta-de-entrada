@@ -6,11 +6,12 @@ programa q simula un sistema simula un cli para manejar un sietema de archivos s
 ##  Funcionamiento 
 - Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
 ```python
-# Importar el módulo os para interactuar con el sistema operativo (cambiar entre directorios y ejecutar comandos)
+""" Importar el módulo os para interactuar con el sistema operativo 
+(cambiar entre directorios y ejecutar comandos) """
 import os  
-# Importar colorama para agregar color al texto en la consola
+""" Importar colorama para agregar color al texto en la consola """
 from colorama import init, Fore, Back  
-# Importar datetime para trabajar con fechas y horas
+""" Importar datetime para trabajar con fechas y horas """
 import datetime  
 ```
 

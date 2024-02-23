@@ -20,7 +20,7 @@ En el caso de `colorama` y `datetime` no son bibliotecas estándar, por lo que s
         `$ pip install datetime`
             
 
--**Establecimiento de ruta de trabajo:** Esta parte del código se encarga de establecer la ruta inicial de trabajo y de seguimiento (`header_path`) dentro de un simulador de sistema de archivos. Primero, obtiene la ruta absoluta del directorio donde se encuentra el script en ejecución (`ruta_script`). Luego, cambia el directorio de trabajo actual al directorio `c` dentro de `ruta_script`. Finalmente, `header_path` se inicializa con la ruta raíz (`C:\`) que se utilizará como base para la navegación y seguimiento de la ubicación actual dentro del sistema simulado.
+- **Establecimiento de ruta de trabajo:** Esta parte del código se encarga de establecer la ruta inicial de trabajo y de seguimiento (`header_path`) dentro de un simulador de sistema de archivos. Primero, obtiene la ruta absoluta del directorio donde se encuentra el script en ejecución (`ruta_script`). Luego, cambia el directorio de trabajo actual al directorio `c` dentro de `ruta_script`. Finalmente, `header_path` se inicializa con la ruta raíz (`C:\`) que se utilizará como base para la navegación y seguimiento de la ubicación actual dentro del sistema simulado.
 ```python
 # Obtener la ruta al directorio actual del script
 ruta_script = os.path.dirname(os.path.abspath(__file__))
@@ -35,7 +35,6 @@ header_path = "C:\\"
 ```python
 def run():
     while True:
-
         # estilos de linea de comando 
         aux = header_path.split("\\")
         raiz= Fore.CYAN + aux[0]
@@ -48,7 +47,6 @@ def run():
         # validacion y ejecucion de comandos 
         command_identification(command)
 
-        
 if __name__ == '__main__':
     os.system('cls')
     run()

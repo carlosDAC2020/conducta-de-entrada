@@ -5,6 +5,7 @@ from colorama import init, Fore, Back
  # Importar datetime para trabajar con fechas y horas
 import datetime 
 
+# Esta línea inicializa la biblioteca colorama para permitir el uso de colores en la consola
 init()
 
 # Obtener la ruta al directorio actual del script

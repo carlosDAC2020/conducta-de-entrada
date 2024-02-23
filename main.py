@@ -32,37 +32,49 @@ def command_identification(command):
         os.system(command)
         
     
-# for command cd 
 def change_directory(command):
+    # Verifica si el comando tiene dos elementos (cd y el directorio)
     if len(command) == 2:
-        # retroceder entre directorios 
+        # Si el directorio es '..', retrocede un nivel en la estructura de directorios
         if command[1] == "..":
             return_rout = header_path.split("\\")
-            if return_rout[1]=="":
+            # Verifica si se intenta ir más atrás del directorio 'raíz' C
+            if return_rout[1] == "":
                 print("Ruta especificada no encontrada")
             else:
-                return_rout.pop()
-                return_rout.pop(0)
-                return_rout = "\\".join(return_rout)
-                os.chdir(os.path.join(ruta_script, "C", return_rout))
-                header_path = "C:\\"+return_rout
+                # Elimina el último elemento (directorio actual)
+                return_rout.pop()  
+                # Elimina el primer elemento (raíz)
+                return_rout.pop(0)  
+                # Une los elementos restantes en una ruta
+                return_rout = "\\".join(return_rout)  
+                # Cambia al nuevo directorio
+                os.chdir(os.path.join(ruta_script, "C", return_rout))  
+                # Actualiza la ruta actual
+                header_path = "C:\\" + return_rout  
 
-        # cambiar a un directorio en la misma carpeta 
+        # Cambiar a un directorio en la misma carpeta
         else:
             current_rout = header_path.split("\\")
-            current_rout.pop(0)
-            current_rout = "\\".join(current_rout)
+            # Elimina el primer elemento (raíz)
+            current_rout.pop(0)  
+            # Une los elementos restantes en una ruta
+            current_rout = "\\".join(current_rout)  
             if os.path.isdir(os.path.join(ruta_script, "C", current_rout, command[1])):
                 # Cambiar al directorio especificado si existe
                 os.chdir(os.path.join(ruta_script, "C", current_rout, command[1]))
-                # actualizamos la ruta actual
-                if current_rout=="":
-                    header_path = "C:\\"+command[1]
+                # Actualiza la ruta actual
+                if current_rout == "":
+                    # en caso de ser un directorior en la 'raiz' C
+                    header_path = "C:\\" + command[1]
                 else:
-                    header_path = "C:\\"+current_rout+"\\"+command[1]
+                    # esto en caso de ser algun subdirectorio
+                    header_path = "C:\\" + current_rout + "\\" + command[1]
 
     else:
-        print("en caso de usar banderas")
+        # Imprime la ruta actual si el comando no tiene la estructura esperada
+        print(header_path)
+
 
 def list_content_directory():
     current_rout = header_path.split("\\")

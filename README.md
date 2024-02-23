@@ -67,6 +67,53 @@ def command_identification(command):
     else :
         os.system(command)
 ```
+### funciones especiales
+- **Cambio de directorio:** La función `change_directory` permite cambiar el directorio actual de trabajo en un simulador de consola. Primero, verifica si el comando contiene dos elementos, lo cual indicaría un comando `cd` seguido de un directorio. Si el directorio es `".."`, retrocede un nivel en la estructura de directorios, eliminando el último elemento de la ruta actual. En caso contrario, intenta cambiar al directorio especificado dentro de la misma carpeta, actualizando la ruta actual en consecuencia. Si el comando no tiene la estructura esperada, simplemente imprime la ruta actual.
+```python
+def change_directory(command):
+    # Verifica si el comando tiene dos elementos (cd y el directorio)
+    if len(command) == 2:
+        # Si el directorio es '..', retrocede un nivel en la estructura de directorios
+        if command[1] == "..":
+            return_rout = header_path.split("\\")
+            # Verifica si se intenta ir más atrás del directorio 'raíz' C
+            if return_rout[1] == "":
+                print("Ruta especificada no encontrada")
+            else:
+                # Elimina el último elemento (directorio actual)
+                return_rout.pop()  
+                # Elimina el primer elemento (raíz)
+                return_rout.pop(0)  
+                # Une los elementos restantes en una ruta
+                return_rout = "\\".join(return_rout)  
+                # Cambia al nuevo directorio
+                os.chdir(os.path.join(ruta_script, "C", return_rout))  
+                # Actualiza la ruta actual
+                header_path = "C:\\" + return_rout  
+
+        # Cambiar a un directorio en la misma carpeta
+        else:
+            current_rout = header_path.split("\\")
+            # Elimina el primer elemento (raíz)
+            current_rout.pop(0)  
+            # Une los elementos restantes en una ruta
+            current_rout = "\\".join(current_rout)  
+            if os.path.isdir(os.path.join(ruta_script, "C", current_rout, command[1])):
+                # Cambiar al directorio especificado si existe
+                os.chdir(os.path.join(ruta_script, "C", current_rout, command[1]))
+                # Actualiza la ruta actual
+                if current_rout == "":
+                    # en caso de ser un directorior en la 'raiz' C
+                    header_path = "C:\\" + command[1]
+                else:
+                    # esto en caso de ser algun subdirectorio
+                    header_path = "C:\\" + current_rout + "\\" + command[1]
+
+    else:
+        # Imprime la ruta actual si el comando no tiene la estructura esperada
+        print(header_path)
+```
+
 
 ## Búsqueda
 En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.

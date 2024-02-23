@@ -3,6 +3,17 @@ programa q simula un sistema simula un cli para manejar un sietema de archivos s
 
 ![](/images/example.jpeg)
 
+##  Funcionamiento 
+- Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
+```python
+# Importar el módulo os para interactuar con el sistema operativo (cambiar entre directorios y ejecutar comandos)
+import os  
+# Importar colorama para agregar color al texto en la consola
+from colorama import init, Fore, Back  
+# Importar datetime para trabajar con fechas y horas
+import datetime  
+```
+
 ## Búsqueda
 En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.
 

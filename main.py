@@ -1,32 +1,38 @@
-import os
-from colorama import init, Fore, Back
-import datetime
+# Importar el módulo os para interactuar con el sistema operativo (cambiar entre directorios y ejecutar comandos)
+import os  
+# Importar colorama para agregar color al texto en la consola
+from colorama import init, Fore, Back  
+ # Importar datetime para trabajar con fechas y horas
+import datetime 
 
 init()
 
 # Obtener la ruta al directorio actual del script
 ruta_script = os.path.dirname(os.path.abspath(__file__))
 
-# Cambiar al directorio deseado
+# nos ubicamos en el directorio c que hara de directorio raiz 
 os.chdir(os.path.join(ruta_script, "c"))
 
+# ruta de ubicacion actual la cual se ira actualizando segun se mueva entre directorios 
 header_path = "C:\\"
 
 def command_identification(command):
+    # obtenemos las instrucciones por ceparado del comando ingresado
     command_instructions = command.split(" ")
     # cambiar de directorio
     if "cd" == command_instructions[0]:
         change_directory(command_instructions)
+    # listar directorios 
     elif "dir"==command_instructions[0]:
         list_content_directory()
         pass
+    # demas comandos (start, del, type, cls, etc..)
     else :
         os.system(command)
         
     
 # for command cd 
 def change_directory(command):
-    global header_path
     if len(command) == 2:
         # retroceder entre directorios 
         if command[1] == "..":
@@ -85,11 +91,15 @@ def run():
         ruta = "\\"+"\\".join(aux[1:]) 
         ruta = Fore.GREEN + ruta
 
+        # ingreso de comandos 
         command = input(f" {raiz}{ruta}> "+Fore.MAGENTA+"$ "+Fore.WHITE)
+
+        # validacion y ejecucion de comandos 
         command_identification(command)
 
         
 if __name__ == '__main__':
+    os.system('cls')
     run()
 
 

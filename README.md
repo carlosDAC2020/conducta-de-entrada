@@ -17,7 +17,9 @@ import datetime
 En el caso de `colorama` y `datetime` no son bibliotecas estándar, por lo que se necesita instalarlas por separado usando pip con los siguientes comandos:
 
         `$ pip install colorama`
+        
         `$ pip install datetime`
+            
 
 - Esta parte del código se encarga de establecer la ruta inicial de trabajo y de seguimiento (`header_path`) dentro de un simulador de sistema de archivos. Primero, obtiene la ruta absoluta del directorio donde se encuentra el script en ejecución (`ruta_script`). Luego, cambia el directorio de trabajo actual al directorio `c` dentro de `ruta_script`. Finalmente, `header_path` se inicializa con la ruta raíz (`C:\`) que se utilizará como base para la navegación y seguimiento de la ubicación actual dentro del sistema simulado.
 ```python

@@ -4,7 +4,7 @@ programa q simula un sistema simula un cli para manejar un sietema de archivos s
 ![](/images/example.jpeg)
 
 ##  Funcionamiento 
-- Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
+-**Uso de modulos:** Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
 ```python
 """ Importar el módulo os para interactuar con el sistema operativo 
 (cambiar entre directorios y ejecutar comandos) """
@@ -17,11 +17,10 @@ import datetime
 En el caso de `colorama` y `datetime` no son bibliotecas estándar, por lo que se necesita instalarlas por separado usando pip con los siguientes comandos:
 
         `$ pip install colorama`
-        
         `$ pip install datetime`
             
 
-- Esta parte del código se encarga de establecer la ruta inicial de trabajo y de seguimiento (`header_path`) dentro de un simulador de sistema de archivos. Primero, obtiene la ruta absoluta del directorio donde se encuentra el script en ejecución (`ruta_script`). Luego, cambia el directorio de trabajo actual al directorio `c` dentro de `ruta_script`. Finalmente, `header_path` se inicializa con la ruta raíz (`C:\`) que se utilizará como base para la navegación y seguimiento de la ubicación actual dentro del sistema simulado.
+-**Establecimiento de ruta de trabajo:** Esta parte del código se encarga de establecer la ruta inicial de trabajo y de seguimiento (`header_path`) dentro de un simulador de sistema de archivos. Primero, obtiene la ruta absoluta del directorio donde se encuentra el script en ejecución (`ruta_script`). Luego, cambia el directorio de trabajo actual al directorio `c` dentro de `ruta_script`. Finalmente, `header_path` se inicializa con la ruta raíz (`C:\`) que se utilizará como base para la navegación y seguimiento de la ubicación actual dentro del sistema simulado.
 ```python
 # Obtener la ruta al directorio actual del script
 ruta_script = os.path.dirname(os.path.abspath(__file__))
@@ -32,6 +31,29 @@ os.chdir(os.path.join(ruta_script, "c"))
 # ruta de ubicacion actual la cual se ira actualizando segun se mueva entre directorios 
 header_path = "C:\\"
 ```
+- **Funcion principal de ejecuion** Esta parte del código representa el bucle principal de la aplicación que simula un sistema de archivos. En cada iteración del bucle `while True`, se solicita al usuario que ingrese un comando. El comando ingresado se pasa a la función `command_identification` para su validación y ejecución. La variable `header_path` se utiliza para mostrar la ruta actual en la línea de comando simulada. El bucle se ejecuta continuamente hasta que el usuario decida salir de la aplicación. La sección `if __name__ == '__main__':` garantiza que este código se ejecute solo si el script se ejecuta directamente.
+```python
+def run():
+    while True:
+
+        # estilos de linea de comando 
+        aux = header_path.split("\\")
+        raiz= Fore.CYAN + aux[0]
+        ruta = "\\"+"\\".join(aux[1:]) 
+        ruta = Fore.GREEN + ruta
+
+        # ingreso de comandos 
+        command = input(f" {raiz}{ruta}> "+Fore.MAGENTA+"$ "+Fore.WHITE)
+
+        # validacion y ejecucion de comandos 
+        command_identification(command)
+
+        
+if __name__ == '__main__':
+    os.system('cls')
+    run()
+```
+
 
 ## Búsqueda
 En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.

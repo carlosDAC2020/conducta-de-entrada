@@ -75,49 +75,46 @@ def change_directory(command):
     if len(command) == 2:
         # Si el directorio es '..', retrocede un nivel en la estructura de directorios
         if command[1] == "..":
-            return_rout = header_path.split("\\")
+            # comando 'cd ..´ --> ['cd','..']
+            return_rout = header_path.split("\\") # 'C:\D3\D31\D312' --> ['C:','D3','D31','D312']
             # Verifica si se intenta ir más atrás del directorio 'raíz' C
             if return_rout[1] == "":
                 print("Ruta especificada no encontrada")
             else:
                 # Elimina el último elemento (directorio actual)
-                return_rout.pop()  
+                return_rout.pop() # ['C:','D3','D31','D312'] --> ['C:','D3','D31']
                 # Elimina el primer elemento (raíz)
-                return_rout.pop(0)  
+                return_rout.pop(0) # ['C:','D3','D31'] --> ['D3','D31']
                 # Une los elementos restantes en una ruta
-                return_rout = "\\".join(return_rout)  
+                return_rout = "\\".join(return_rout) # ['D3','D31'] --> 'D3\D31'
                 # Cambia al nuevo directorio
-                os.chdir(os.path.join(ruta_script, "C", return_rout))  
+                os.chdir(os.path.join(ruta_script, "C", return_rout)) # -> ruta\script\C\D3\D31
                 # Actualiza la ruta actual
-                header_path = "C:\\" + return_rout  
+                header_path = "C:\\" + return_rout # -> C:\D3\D31
 
-        # Cambiar a un directorio en la misma carpeta
+        # Cambiar a un otro directorio
         else:
-            current_rout = header_path.split("\\")
+            # comando 'cd D31\D311´ --> ['cd','D31\D311']
+            current_rout = header_path.split("\\") # 'C:\D3' --> ['C:','D3']
             # Elimina el primer elemento (raíz)
-            current_rout.pop(0)  
+            current_rout.pop(0) # ['C:','D3'] --> ['D3'] 
             # Une los elementos restantes en una ruta
-            current_rout = "\\".join(current_rout)  
+            current_rout = "\\".join(current_rout) # ['D3'] -> D3
             if os.path.isdir(os.path.join(ruta_script, "C", current_rout, command[1])):
                 # Cambiar al directorio especificado si existe
-                os.chdir(os.path.join(ruta_script, "C", current_rout, command[1]))
+                os.chdir(os.path.join(ruta_script, "C", current_rout, command[1])) # -  ruta\script\C\D3\D31\D311
                 # Actualiza la ruta actual
                 if current_rout == "":
                     # en caso de ser un directorior en la 'raiz' C
                     header_path = "C:\\" + command[1]
                 else:
                     # esto en caso de ser algun subdirectorio
-                    header_path = "C:\\" + current_rout + "\\" + command[1]
+                    header_path = "C:\\" + current_rout + "\\" + command[1] # C:\D3\D31\D311
 
     else:
         # Imprime la ruta actual si el comando no tiene la estructura esperada
         print(header_path)
 ```
-
-
-## Búsqueda
-En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.
-
 Se realiza una búsqueda a partir de la carpeta actual hacia algún subdirectorio de esta. Por ejemplo, si se está en la raíz `C:\` y se entra al directorio `D3`, se puede seguir recorriendo los directorios ubicados en `D3` y así sucesivamente. Sin embargo, la búsqueda en dirección ascendente para retroceder de directorio no está disponible en esta simulación.
 <div>
     <h4>Recorrido valido</h4>

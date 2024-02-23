@@ -33,6 +33,7 @@ def command_identification(command):
         
     
 def change_directory(command):
+    global header_path
     # Verifica si el comando tiene dos elementos (cd y el directorio)
     if len(command) == 2:
         # Si el directorio es '..', retrocede un nivel en la estructura de directorios

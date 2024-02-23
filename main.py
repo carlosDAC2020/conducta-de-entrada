@@ -78,22 +78,36 @@ def change_directory(command):
 
 
 def list_content_directory():
+    # Obtiene la ruta actual separada por el separador de directorios
     current_rout = header_path.split("\\")
-    current_rout.pop(0)
-    current_rout = "\\".join(current_rout)
+    # Elimina el primer elemento (raíz)
+    current_rout.pop(0)  
+    # Une los elementos restantes en una ruta
+    current_rout = "\\".join(current_rout)  
+
+    # Obtiene el contenido del directorio actual
     content = os.listdir(os.path.join(ruta_script, "C", current_rout))
 
+    # Muestra el encabezado de la lista de contenido
     print('-'*55)
     print(Fore.MAGENTA+"\n{:20} {:10} {:10} {:10}".format('Created', 'Type', 'Size', 'Name')+Fore.RESET)
     print('-'*55)
+
+    # Itera sobre el contenido del directorio
     for item in content:
         item_path = os.path.join(ruta_script, "C", current_rout, item)
-        type =  Back.BLUE + "DIR"+ Back.RESET if os.path.isdir(item_path) else Back.GREEN + "FLE"+ Back.RESET 
+        # Determina si el elemento es un directorio o un archivo
+        type = Back.BLUE + "DIR" + Back.RESET if os.path.isdir(item_path) else Back.GREEN + "FLE" + Back.RESET
+        # Obtiene el tamaño y la fecha de creación del elemento
         size = os.path.getsize(item_path)
         date_created_timestamp = os.path.getctime(item_path)
         date_created = datetime.datetime.fromtimestamp(date_created_timestamp).strftime("%d/%m/%Y %I:%M %p")
+        # Muestra la información del elemento
         print("{:^20} {:^10} {:^15} {:^8}".format(date_created, type, f'{size} bytes', item))
+    
+    # Muestra el separador final
     print('-'*55)
+
     
 
 def run():

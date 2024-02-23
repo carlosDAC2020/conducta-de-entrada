@@ -127,8 +127,41 @@ Se realiza una búsqueda a partir de la carpeta actual hacia algún subdirectori
 
 El comando `cd ..` está habilitado en esta simulación para retroceder un directorio por comando. Esto significa que puedes usar `cd ..` para retroceder un nivel en la estructura de directorios en tu simulación. Sin embargo, solo puedes retroceder un directorio a la vez. Por ejemplo, si estás en el directorio `C:\D3\D31`  y ejecutas `cd ..`, retrocederás al directorio `C:\D3`.
 
-## Otros comandos disponibles 
-Los siguiente comandos funcionan tal cual como en el cmd de Windows 
+- **Listar contenido de un directorio:** La función `list_content_directory()` obtiene y muestra de manera detallada el contenido del directorio actual. Primero, obtiene la ruta actual y la lista de elementos en ese directorio. Luego, itera sobre cada elemento y determina si es un directorio o un archivo. Para cada elemento, muestra la fecha de creación, el tipo (DIR/FLE), el tamaño en bytes y el nombre. Finalmente, muestra un separador para indicar el final de la lista.
+```python
+def list_content_directory():
+    # Obtiene la ruta actual separada por el separador de directorios
+    current_rout = header_path.split("\\")
+    # Elimina el primer elemento (raíz)
+    current_rout.pop(0)  
+    # Une los elementos restantes en una ruta
+    current_rout = "\\".join(current_rout)  
+
+    # Obtiene el contenido del directorio actual
+    content = os.listdir(os.path.join(ruta_script, "C", current_rout))
+
+    # Muestra el encabezado de la lista de contenido
+    print('-'*55)
+    print(Fore.MAGENTA+"\n{:20} {:10} {:10} {:10}".format('Created', 'Type', 'Size', 'Name')+Fore.RESET)
+    print('-'*55)
+
+    # Itera sobre el contenido del directorio
+    for item in content:
+        item_path = os.path.join(ruta_script, "C", current_rout, item)
+        # Determina si el elemento es un directorio o un archivo
+        type = Back.BLUE + "DIR" + Back.RESET if os.path.isdir(item_path) else Back.GREEN + "FLE" + Back.RESET
+        # Obtiene el tamaño y la fecha de creación del elemento
+        size = os.path.getsize(item_path)
+        date_created_timestamp = os.path.getctime(item_path)
+        date_created = datetime.datetime.fromtimestamp(date_created_timestamp).strftime("%d/%m/%Y %I:%M %p")
+        # Muestra la información del elemento
+        print("{:^20} {:^10} {:^15} {:^8}".format(date_created, type, f'{size} bytes', item))
+    
+    # Muestra el separador final
+    print('-'*55)
+```
+
+- ***Otros comandos disponibles:**Los siguiente comandos funcionan tal cual como en el cmd de Windows, esto usando la funcion `os.system`.
 
 | Comando                | Descripción                                |
 | :--------------------- | :----------------------------------------- |

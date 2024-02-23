@@ -15,6 +15,7 @@ from colorama import init, Fore, Back
 import datetime  
 ```
 En el caso de `colorama` y `datetime` no son bibliotecas estándar, por lo que se necesita instalarlas por separado usando pip con los siguientes comandos:
+
         `$ pip install colorama`
         `$ pip install datetime`
 

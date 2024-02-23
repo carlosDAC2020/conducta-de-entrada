@@ -4,7 +4,7 @@ programa q simula un sistema simula un cli para manejar un sietema de archivos s
 ![](/images/example.jpeg)
 
 ##  Funcionamiento 
--**Uso de modulos:** Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
+- **Uso de modulos:** Se hace uso de algunas librerias las cuales nos ayudan a partes del funcionamiento del script
 ```python
 """ Importar el módulo os para interactuar con el sistema operativo 
 (cambiar entre directorios y ejecutar comandos) """
@@ -51,7 +51,22 @@ if __name__ == '__main__':
     os.system('cls')
     run()
 ```
-
+- **Validacion y ejecucion de comandos:** Se define la función `command_identification` que se encarga de analizar y ejecutar los comandos ingresados por el usuario. Primero, divide el comando ingresado en sus partes individuales utilizando el espacio como separador. Luego, verifica si el primer elemento de la lista de instrucciones es `"cd"` para cambiar de directorio utilizando la función `change_directory`. Si el comando es `"dir"`, llama a la función `list_content_directory` para listar el contenido del directorio actual. Para cualquier otro comando, se ejecuta el comando directamente en el sistema operativo utilizando `os.system`.
+```python
+def command_identification(command):
+    # obtenemos las instrucciones por ceparado del comando ingresado
+    command_instructions = command.split(" ")
+    # cambiar de directorio
+    if "cd" == command_instructions[0]:
+        change_directory(command_instructions)
+    # listar directorios 
+    elif "dir"==command_instructions[0]:
+        list_content_directory()
+        pass
+    # demas comandos (start, del, type, cls, etc..)
+    else :
+        os.system(command)
+```
 
 ## Búsqueda
 En esta función se simula la ejecución del comando `cd` para cambiar de directorio de varias formas.
